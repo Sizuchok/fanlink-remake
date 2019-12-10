@@ -1,0 +1,68 @@
+<div class="row mt-7">
+  <div class="col-md-5 m-auto">
+    <div class="card card-body" style="padding-bottom: 0px;">
+      <img
+        src="https://pbs.twimg.com/profile_images/1096109506684174337/cgpeWEEk_400x400.png"
+        alt="LOL"
+        class="img-fluid"
+      />
+      <br />
+      <div class="text-center">
+        <h5>SG Lewis - Blue</h5>
+        <h6 class="font-bold">by SG Lewis</h6>
+      </div>
+      <br />
+      <div class="row text-center" style="color: black;">
+        <p>
+          Create Fanlinks for FREE – Allow Your Fans to Find Your Music in
+          Streaming Platforms Fast
+        </p>
+      </div>
+      <!-- Info -->
+      <div class="row mt-7" style="height: 90px; border-top:2px solid #F6F6F6;">
+        <div class="col align-self-center">
+          <a href="/users/register" class="btn btn-primary btn-block mb-2"
+            >Register</a
+          >
+        </div>
+        <div class="col align-self-center text-center">
+          <a href="/users/login" class="btn btn-secondary btn-block mb-2"
+            >Login</a
+          >
+        </div>
+      </div>
+      <div class="row" style="margin: 0px; padding: 5px;">
+        <div id="what" class="col-sm text-center">
+          <a onclick="showInfo()" href="#">What it is?</a>
+        </div>
+        <div hidden id="info" class="row text-center" style="color: black;">
+          <p >
+            FanLinks are a smart linking tool that lists all of your links to
+            where your music can be found and displays it on a custom-designed
+            landing page. This is meant to make promoting your music even easier
+            because the FanLink can be attached to an email, social media, or
+            anywhere on the Internet.
+          </p>
+        </div>
+        <div hidden id="close" class="col-sm text-center">
+            <a onclick="closeInfo()" href="#">Close</a>
+          </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showInfo(){
+    document.getElementById('what').setAttribute("hidden", "");
+    document.getElementById('info').removeAttribute("hidden");
+    document.getElementById('close').removeAttribute("hidden");
+  }
+
+  function closeInfo(){
+    document.getElementById('close').setAttribute("hidden", "");
+    document.getElementById('info').setAttribute("hidden", "");
+    document.getElementById('what').removeAttribute("hidden");
+  }
+</script>

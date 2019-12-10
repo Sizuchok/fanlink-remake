@@ -1,0 +1,117 @@
+<div class="row mt-7">
+  <div class="col-md-9 m-auto">
+    <div class="card card-body" style="padding-bottom: 0px;">
+      <div class="text-center">
+        <h1 id="in" class="mt-4">New FanLink</h1>
+      </div>
+
+      <!-- Forms -->
+      <form action="/social-link/new/save/" method="POST">
+        <div class="row">
+          <div class="col-sm text-center">
+            <button type="submit" class="btn btn-light">Save</button>
+          </div>
+          <div class="col-sm text-center">
+            <a href="/campaigns" class="btn btn-secondary">Campaigns</a>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Song title</label>
+          <input
+            onkeyup="changeText()"
+            name="song_title"
+            class="form-control"
+            id="s_title"
+            placeholder="SG Lewis - Blue (liiusion remix)"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputState">Unlock type</label>
+          <select
+            name="unlock_type"
+            id="inputState"
+            class="form-control"
+            required
+          >
+            <option>Download file</option>
+            <option>Secret link</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Unlock button text</label>
+          <input
+            name="unlock_button_text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Give me that track!"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Image address</label>
+          <input
+            name="image_path"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Paste image link here"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputState">Social network</label>
+          <select
+            name="social_network"
+            id="inputState"
+            class="form-control"
+            required
+          >
+            <option>SoundCloud</option>
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>Spotify</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Social network link</label>
+          <input
+            name="social_network_link"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Paste link here"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Unlocked link</label>
+          <input
+            name="unlocked_link"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Paste link here"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"
+            >Something about song or artist personal message</label
+          >
+          <textarea
+            name="personal_message"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function changeText() {
+    let text = document.getElementById("s_title").value;
+    document.getElementById("in").innerText =
+      text == "" ? "New Social Link" : text;
+  }
+</script>

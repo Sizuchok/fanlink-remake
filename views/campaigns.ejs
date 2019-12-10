@@ -1,0 +1,87 @@
+<div class="row mt-7">
+  <div class="col-md-9 m-auto">
+    <div class="card card-body text-center">
+      <h1 class="mt-4">Your campaigns</h1>
+      <p class="lead mb-3">Welcome <%=name%></p>
+      <!-- FanLinks start -->
+      
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center font-weight-bold active"
+        >
+          -FanLinks-
+          <span class="badge badge-primary badge-pill"
+            ><%=fan_links.length%></span
+          >
+        </li>
+      </ul>
+
+      <!-- FanLinks list -->
+      <%fan_links.forEach(function(link) {%>
+      <div class="list-group">
+        <a
+          href="/fanlink/edit/<%=link.id%>"
+          class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1"><%=link.song_title%></h6>
+            <small><%=link.artist_name%></small>
+          </div>
+          <p class="mb-1">
+            <%=link.personal_message%>
+          </p>
+        </a>
+      </div>
+      <%});%>
+      <div class="row">
+          <div class="col-sm text-right">
+              <a href="/fanlink/new">Create new link campaign</a>
+          </div>
+        </div>
+      <br />
+      <!-- Social Unlocks -->
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center font-weight-bold active"
+        >
+          -Social Unlocks-
+          <span class="badge badge-primary badge-pill"
+            ><%=social_unlocks.length%></span
+          >
+        </li>
+      </ul>
+      <!-- Social Unlocks list -->
+      <%social_unlocks.forEach(function(link) {%>
+      <div class="list-group">
+        <a
+          href="/social-link/edit/<%=link.id%>"
+          class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1"><%=link.song_title%></h6>
+            <small><%=link.unlock_type%></small>
+          </div>
+          <p class="mb-1">
+            <%=link.personal_message%>
+          </p>
+        </a>
+      </div>
+      <%});%>
+      <div class="row">
+        <div class="col-sm text-right">
+            <a href="/social-link/new">Create new unlock campaign</a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm text-right">
+            <a href="/users/logout" class="btn btn-secondary">Logout</a>
+        </div>
+        <div class="col-sm text-left">
+            <a href="/settings/" class="btn btn-secondary">Settings</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

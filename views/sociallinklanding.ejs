@@ -1,0 +1,66 @@
+<div class="row mt-7">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <img
+        src="<%=linkInfo.image_path%>"
+        alt="<%=linkInfo.song_title%>"
+        class="img-fluid"
+      />
+      <br />
+      <div class="text-center">
+        <h5><%=linkInfo.song_title%></h5>
+        <br>
+        <h6 style="color: black;" class="font-bold"><%=linkInfo.personal_message%></h6>
+      </div>
+    
+      <br />
+      <%if(linkInfo.social_network == 'SoundCloud') {%>
+      <a
+        onclick="giveLink()"
+        target="_blank"
+        class="btn btn-warning"
+        href="<%=linkInfo.social_network_link%>"
+        >Follow <%=linkInfo.social_network%> to unlock</a
+      >
+      <%} else if(linkInfo.social_network == 'Facebook'){%>
+      <a
+        onclick="giveLink()"
+        target="_blank"
+        class="btn"
+        style="background-color: #4267B2; color: white;"
+        href="<%=linkInfo.social_network_link%>"
+        >Follow <%=linkInfo.social_network%> to unlock</a
+      >
+      <%} else if(linkInfo.social_network == 'Instagram') {%>
+      <a
+        onclick="giveLink()"
+        target="_blank"
+        class="btn"
+        style="background-color: #E22F6D; color: white;"
+        href="<%=linkInfo.social_network_link%>"
+        >Follow <%=linkInfo.social_network%> to unlock</a
+      >
+      <%} else {%>
+        <a
+        onclick="giveLink()"
+        target="_blank"
+        class="btn"
+        style="background-color: #1DB954; color: white;"
+        href="<%=linkInfo.social_network_link%>"
+        >Follow <%=linkInfo.social_network%> to unlock</a
+      >
+        <%}%>
+      <a hidden class="btn btn-primary" href="<%=linkInfo.unlocked_link%>"
+        ><%=linkInfo.unlock_button_text%></a
+      >
+      <!-- <button class="btn btn-primary"><%=linkInfo.unlock_button_text%></button> -->
+    </div>
+  </div>
+</div>
+
+<script>
+  function giveLink() {
+    document.getElementsByClassName("btn")[0].setAttribute("hidden", "");
+    document.getElementsByClassName("btn-primary")[0].removeAttribute("hidden");
+  }
+</script>

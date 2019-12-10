@@ -1,0 +1,112 @@
+<div class="row mt-7">
+  <div class="col-md-5 m-auto">
+    <div class="card card-body">
+      <img
+        src="<%=linkInfo.image_path%>"
+        alt="<%=linkInfo.song_title%>"
+        class="img-fluid"
+      />
+      <br />
+      <div class="text-center">
+        <h5><%=linkInfo.song_title%></h5>
+        <br>
+        <h6 style="color: black;" class="font-bold"><%=linkInfo.personal_message%></h6>
+      </div>
+
+      <!-- links itself -->
+      <div class="row mt-7" style="height: 90px; border-top:2px solid #F6F6F6;">
+        <div class="col align-self-center">
+          <img
+            src="https://st.toneden.io/production/images/link-services/soundcloud.png"
+            class="img-fluid"
+            alt="SounCloud"
+          />
+        </div>
+        <div class="col align-self-center text-center">
+          <a href="<%=linkInfo.soundcloud_link%>">Play</a>
+        </div>
+      </div>
+      <!-- YouTube -->
+      <%if(linkInfo.youtube_link != '') {%>
+      <div
+        class="row mt-7"
+        style="height: 90px; border-top: 2px solid #F6F6F6; "
+      >
+        <div class="col align-self-center">
+          <img
+            src="https://i.ya-webdesign.com/images/youtube-logo-transparent-background-png-7.png"
+            class="img-fluid "
+            style="height: 70px; padding-left: 20px;"
+            alt="YouTube"
+          />
+        </div>
+        <div class="col align-self-center text-center">
+          <a href="<%=linkInfo.youtube_link%>">Play</a>
+        </div>
+      </div>
+      <%}%>
+      <!-- Spotify -->
+      <%if(linkInfo.spotify_link != '') {%>
+      <div
+        class="row mt-7 "
+        style="height: 90px; border-top: 2px solid #F6F6F6;"
+      >
+        <div class="col align-self-center">
+          <img
+            src="https://st.toneden.io/production/images/link-services/spotify.png"
+            class="img-fluid"
+            alt="Spotify"
+          />
+        </div>
+        <div class="col align-self-center text-center">
+          <a href="<%=linkInfo.spotify_link%>">Play</a>
+        </div>
+      </div>
+      <%}%>
+      <!-- Google PLay -->
+      <%if(linkInfo.google_play_music != '') {%>
+      <div
+        class="row mt-7"
+        style="height: 90px; border-top: 2px solid #F6F6F6;"
+      >
+        <div class="col align-self-center">
+          <img
+            src="https://www.stickpng.com/assets/images/5847fb04cef1014c0b5e48cf.png"
+            class="img-fluid"
+            alt="Google Play"
+          />
+        </div>
+        <div class="col align-self-center text-center">
+          <a href="<%=linkInfo.youtube_link%>">Play</a>
+        </div>
+      </div>
+      <%}%>
+      <br />
+      <%if(linkInfo.social_id) {%> 
+        
+          <%if(linkInfo.social_network == 'SoundCloud') {%>
+          <a onclick="giveLink()" target="_blank" class="btn btn-warning" href="<%=linkInfo.social_network_link%>">Follow <%=linkInfo.social_network%> to unlock</a>
+          <%} else if(linkInfo.social_network == 'Facebook'){%>
+          <a onclick="giveLink()" target="_blank" class="btn btn-primary" style="color: white;" href="<%=linkInfo.social_network_link%>">Follow <%=linkInfo.social_network%> to unlock</a>
+          <%} else {%>
+            <a onclick="giveLink()" target="_blank" class="btn btn-primary" style="color: white;" href="<%=linkInfo.social_network_link%>">Follow <%=linkInfo.social_network%> to unlock</a>
+            <%}%>
+          <a hidden class="btn btn-primary" href="<%=linkInfo.unlocked_link%>"><%=linkInfo.unlock_button_text%></a>
+        <!-- <button class="btn btn-primary"><%=linkInfo.unlock_button_text%></button> -->
+      <%} else{%>
+        <style>
+            .card-body{
+              padding-bottom: 0px;
+            }
+          </style>
+        <%}%>
+    </div>
+  </div>
+</div>
+
+<script>
+  function giveLink(){
+    document.getElementsByClassName('btn')[0].setAttribute('hidden', '');
+    document.getElementsByClassName('btn-primary')[0].removeAttribute('hidden');
+  }
+</script>

@@ -1,0 +1,197 @@
+<div class="row mt-7">
+  <div class="col-md-9 m-auto">
+    <div class="card card-body" style="padding-bottom: 0px;">
+      <div class="text-center">
+        <h1 id="in" class="mt-4"><%=linkInfo.song_title%></h1>
+      </div>
+
+      <!-- Forms -->
+      <form action="/save/<%=linkInfo.id%>" method="POST">
+              <!-- Buttons -->
+        <div class="row">
+          <div class="col-sm text-right">
+            <button type="submit" class="btn btn-light">Save</button>
+          </div>
+          <div class="col-sm text-center">
+            <a href="/campaigns" class="btn btn-secondary">Campaigns</a>
+          </div>
+          <div class="col-sm text-center">
+            <a
+              target="_blank"
+              href="/fanlink/view/<%=linkInfo.id%>"
+              class="btn btn-secondary"
+              >Open in new tab</a
+            >
+          </div>
+          <div class="col-sm text-left">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Song title</label>
+          <input
+            onkeyup="changeText()"
+            name="song_title"
+            value="<%=linkInfo.song_title%>"
+            class="form-control"
+            id="s_title"
+            placeholder="SG Lewis - Blue (liiusion remix)"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Artist name</label>
+          <input
+            name="artist_name"
+            value="<%=linkInfo.artist_name%>"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="liiusion"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Image address</label>
+          <input
+            name="image_path"
+            value="<%=linkInfo.image_path%>"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Paste image link here"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">SounCloud link</label>
+          <input
+            name="soundcloud_link"
+            value="<%=linkInfo.soundcloud_link%>"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Paste link here"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">YouTube link</label>
+          <input
+            name="youtube_link"
+            value="<%=linkInfo.youtube_link%>"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Leave empty if not required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Spotify link</label>
+          <input
+            name="spotify_link"
+            value="<%=linkInfo.spotify_link%>"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Leave empty if not required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Google Play Music link</label>
+          <input
+            name="google_play_music"
+            value="<%=linkInfo.google_play_music%>"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Leave empty if not required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputState">Social Unlock</label>
+          <select
+            name="social_unlock"
+            id="<%=linkInfo.social_id%>"
+            class="form-control"
+          >
+            <%socials_list.forEach(function(elem){%>
+            <option class="<%=elem.id%>"
+              ><%=elem.id + ': ' + elem.song_title%></option
+            >
+            <%});%>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"
+            >Something about song or artist personal message</label
+          >
+          <textarea
+            name="personal_message"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          >
+<%=linkInfo.personal_message%></textarea
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Confirm your action
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this link campaign?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancel
+        </button>
+        <a
+          href="/fanlink/delete/<%=linkInfo.id%>"
+          type="button"
+          class="btn btn-primary"
+          >Delete</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function changeText() {
+    let text = document.getElementById("s_title").value;
+    document.getElementById("in").innerText =
+      text == "" ? "New Social Link" : text;
+  }
+
+  let social_id = document.getElementsByName("social_unlock")[0].id;
+  if (social_id != "") {
+    document.getElementsByClassName(social_id)[0].setAttribute("selected", "");
+  }
+</script>
